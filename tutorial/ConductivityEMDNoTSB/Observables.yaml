@@ -1,0 +1,6 @@
+# This implements the observables that we have. Notice here subleading/leading part.
+Bdy_00:
+ JxR: real(-1.J*psi[0,1]/(omega*psi[0,0]))
+ JxI: imag(-1.J*psi[0,1]/(omega*psi[0,0]))
+ T: T
+ rho: rho

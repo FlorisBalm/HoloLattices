@@ -1,0 +1,48 @@
+# No useless tex files
+build/
+drafts/
+drafts/*
+build/*
+coefs/
+coefs/*
+Manual/*.log
+Manual/*.bak
+Manual/*.aux
+Manual/*.synctex
+Manual/*synctex*
+Manual/*.out
+# possible logging outputs
+*.log
+*.out
+# No IDE files
+.idea/
+.ipynb_checkpoints/
+.ipynb_checkpoints/*
+
+# No Vim swp files
+*.swp
+*.swo
+
+# No local data
+data/*
+data/
+!tutorial/SeriesExample/data/RN_Converged_L1_T0.1.h5
+debug/
+debug/*
+localtests
+*h5
+*_par_*.ini
+log/
+SetupFile_*.ini
+Examples/*.csv
+Examples/*.txt
+
+# No python generated .pyo .pyx etc bytecode files
+__pycache__/*
+__pycache__/
+**/__pycache__/
+
+# Weird mac files or something? Also useless.
+.nfs*
+# Jupyter NOtebook files are hard for git
+*.ipynb 

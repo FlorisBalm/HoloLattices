@@ -1,0 +1,7 @@
+pathos
+dill
+h5py
+numpy
+scipy
+pyFFTW
+pyyaml

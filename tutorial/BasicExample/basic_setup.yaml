@@ -1,0 +1,66 @@
+# This is an example "new style" setup file. Imagine that it is reading all these things into dicts. 
+# It interprets numbers as much as it can as numbers (scientific notation needs a .). Yes/no/true/false
+# etc get parsed into boolean. For more info, look up the structure of YAML files.
+#
+# The most important to know is that whitespace IS relevant: 2 spaces make a nesting, spaces 
+# after : and - for listing are needed. Multiline objects can be declared with > 
+#
+# Relevant here is that the way the code is written, each of these can be in separate files or whatever
+# you want. One file is fine. options that are not applicable are ignored. 
+# 
+# Important: constants are a bit tricky. It's not possible to put calculations directly into this.
+# From the point of view of extensibility therefore you should either:
+# - Calculate and write the actual physical parameters that occur in the problems in these constants.
+#   This is not always ideal, can can lead to quite a bit of extra work when setting up calculations
+# - Preferably: Override the settings class to calculate the relevant physical parameters for the problem.
+#   This can be a dataclass with a __post_init__ method defined for example. These are called after
+#   __init__ finishes, so it would be ideal for these kind of things. 
+#
+#
+
+EquationOptions:
+  grid_sizes: [20,40]
+  # the size of each domain in real space.
+  grid_domains:
+    [1.0,1.0]
+  grid_spacings: [unif, unif] # Currently, unif and cheb are technically supported, although cheb has not been tested enough.
+  diff_order: 4
+  grid_periodic: [yes, no]
+  dims: 2 # Number of dimensions to evaluate in
+  num_fields: 9
+  num_eqs_of_motion: 9
+  max_deriv: 2 # More than 2 is never supported - this option is here to allow for first-derivative only problems like the first fermions
+  coordinates: [x,z]
+  field: f # Name of the field that we are solving for in the equations. Usually named f when doing the backgrounds, or psi when doing conductivities
+  field_dtype: float64 # can be complex (or some higher-bit type for increased precision at cost of runtime)
+  eom_derivative_methods: ["fdd", "fdd"]
+
+SolverOptions:
+  tolerance: 1.0e-12 # Tolerance to set for convergence
+# Technique to use to evaluate the derivatives for the equations of motion, like fft or fdd
+  nonlinear_update_step: 1.0 # Set to a smaller value when doing a non-NR based approach
+  max_nonlinear_steps : 20 
+
+IOOptions:
+  coefficient_folder: "./AllEquations/" # This is the directory that all the *txt files are in
+  # If set to yes/true/..., it tries to evaluate the file as a functions (e.g. can set explicit background ansatz in functional form).
+  # If set to no/false/..., it tries to read an hdf5 file with the fields as an array
+  seed_algebraic: yes
+  seed_file: "RNSeed.txt"
+  observables_file: "Observables.yaml"
+  # If you set this, it'll try to load the constants that are given in the seed (if there are any). If any constants are required that are not defined this way, the program will fail"
+  use_constants_from_seed: no
+  output_file: "./data/Reissner_Nordstrom_Solution.h5"
+
+
+  #Pretty straightforward, here you set the constants
+ConstantOptions:
+  constants:
+    lx: 1
+    ly: 1
+    ax: 0.1
+    mu: 1.76651
+    mu1: 1.76651
+    nperiodsx: 1
+    phasex: 0.01
+    c1: 9.9

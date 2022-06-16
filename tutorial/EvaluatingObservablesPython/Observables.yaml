@@ -1,0 +1,4 @@
+Bdy_10:
+    # NOTE: NOT SURE THISIS THE RIGHT EXPRESSION HERE
+    rho: (f[0,0] - 0.5*f[0,2])/mu
+    test: f[0,9]

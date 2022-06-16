@@ -1,0 +1,8 @@
+Installation is simple: (ideally in a virtualenv/venv/some kind of python containerized wrapper)
+just run "pip install ." in the main directory, then have a look at some of the examples. If an update happens, just "git pull" the latest version and "pip install ." again to load the new version into your code.
+
+Try not to work in the git tree, but instead opt to do it somewhere else (the pip install should handle the change of location, you will just have to copy over the equations/observables/other scripts and point the setup to the correct directories).
+
+I'm still working on updating and fixing bugs, but the way the code works in itself is quite simple: it loads all the options in all the files, adding options (SHOULD) be straightforward by subclassing the already existing options, the physics of observables etc is handled simply by evaluating functions, if you keep to the structure of it (yaml) it should simply evaluate to whatever you wish, using the constants specified.
+
+
