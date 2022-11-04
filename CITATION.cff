@@ -1,0 +1,9 @@
+cff-version: 1.1.0
+message: "If you use this software, please cite it as below."
+authors:
+  - family-names: Balm
+    given-names: Floris
+    orcid: https://orcid.org/0000-0001-9387-3203
+title: HoloLattices: Python codes for Holographic Lattices
+version: v0.1.0
+date-released: 2022-11-04
